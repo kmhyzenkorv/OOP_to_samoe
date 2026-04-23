@@ -1,16 +1,21 @@
 ﻿namespace romashka_3
 {
+    /// <summary>
+    /// Команда генерации содержимого документа по связанному шаблону.
+    /// </summary>
     public class GenerateDocumentCommand : Command
     {
         private DocumentManager manager;
         private TemplateManager templateManager;
 
+        /// <summary>Создаёт команду генерации документа.</summary>
         public GenerateDocumentCommand(DocumentManager m, TemplateManager t)
         {
             manager = m;
             templateManager = t;
         }
 
+        /// <summary>Находит документ по ID, подбирает шаблон и генерирует содержимое.</summary>
         public void execute()
         {
             Console.Write("ID документа: ");
@@ -41,17 +46,20 @@
         }
     }
 
+    /// <summary>Команда сохранения документов через сервис персистентности.</summary>
     public class SaveDocumentCommand : Command
     {
         private DocumentManager manager;
         private PersistenceService persistence;
 
+        /// <summary>Создаёт команду сохранения документов.</summary>
         public SaveDocumentCommand(DocumentManager m, PersistenceService p)
         {
             manager = m;
             persistence = p;
         }
 
+        /// <summary>Сохраняет все документы и выводит подтверждение.</summary>
         public void execute()
         {
             persistence.saveDocuments(manager.getAllDocuments());
@@ -59,15 +67,18 @@
         }
     }
 
+    /// <summary>Команда отображения списка всех документов.</summary>
     public class OpenDocumentCommand : Command
     {
         private DocumentManager manager;
 
+        /// <summary>Создаёт команду просмотра документов.</summary>
         public OpenDocumentCommand(DocumentManager m)
         {
             manager = m;
         }
 
+        /// <summary>Выводит документы в консоль.</summary>
         public void execute()
         {
             foreach (var d in manager.getAllDocuments())
@@ -77,15 +88,18 @@
         }
     }
 
+    /// <summary>Команда удаления документа по ID.</summary>
     public class DeleteDocumentCommand : Command
     {
         private DocumentManager manager;
 
+        /// <summary>Создаёт команду удаления документа.</summary>
         public DeleteDocumentCommand(DocumentManager m)
         {
             manager = m;
         }
 
+        /// <summary>Запрашивает ID и удаляет найденный документ.</summary>
         public void execute()
         {
             Console.Write("ID: ");
@@ -110,15 +124,20 @@
         }
     }
 
+    /// <summary>
+    /// Инвокер паттерна "Команда": хранит и запускает текущую команду.
+    /// </summary>
     public class Invoker
     {
         private Command command;
 
+        /// <summary>Устанавливает команду для последующего выполнения.</summary>
         public void setCommand(Command cmd)
         {
             command = cmd;
         }
 
+        /// <summary>Выполняет ранее установленную команду.</summary>
         public void execute()
         {
             command.execute();

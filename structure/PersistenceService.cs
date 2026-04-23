@@ -3,10 +3,17 @@ using System.Text.Json;
 
 namespace oma_structure
 {
+    /// <summary>
+    /// Сервис сохранения и загрузки документов в JSON-файл.
+    /// </summary>
     public class PersistenceService
     {
         private const string FileName = "documents.json";
 
+        /// <summary>
+        /// Сохраняет список документов в JSON-файл с форматированием.
+        /// </summary>
+        /// <param name="docs">Список документов для сохранения.</param>
         public void saveDocuments(List<Document> docs)
         {
             var options = new JsonSerializerOptions
@@ -18,6 +25,10 @@ namespace oma_structure
             File.WriteAllText(FileName, json);
         }
 
+        /// <summary>
+        /// Загружает документы из JSON-файла и восстанавливает конкретные типы.
+        /// </summary>
+        /// <returns>Список документов или пустой список, если файл отсутствует или повреждён.</returns>
         public List<Document> loadDocuments()
         {
             if (!File.Exists(FileName))

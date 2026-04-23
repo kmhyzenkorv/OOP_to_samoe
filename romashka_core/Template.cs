@@ -1,5 +1,8 @@
 ﻿namespace romashka_core
 {
+    /// <summary>
+    /// Шаблон документа: хранит идентификатор, имя, тип документа, путь к файлу и описание.
+    /// </summary>
     public class Template
     {
         public int TemplateId { get; set; }

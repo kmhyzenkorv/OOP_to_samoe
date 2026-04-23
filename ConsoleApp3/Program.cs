@@ -1,8 +1,15 @@
 ﻿using oma_structure;
 using roma_application;
 
+/// <summary>
+/// Точка входа консольного приложения для управления документами.
+/// Инициализирует менеджеры, загружает данные и запускает меню работы с документами.
+/// </summary>
 class Program
 {
+    /// <summary>
+    /// Главный метод. Отображает меню и обрабатывает команды пользователя в цикле.
+    /// </summary>
     static void Main()
     {
         var docManager = new DocumentManager();
