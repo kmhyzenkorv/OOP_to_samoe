@@ -1,0 +1,53 @@
+[
+  {
+    "Id": 1,
+    "Type": "contract",
+    "Title": null,
+    "Author": null,
+    "CreatedDate": "2026-04-23T19:29:51.6133187+05:00",
+    "LastModified": "2026-04-23T19:29:56.5290564+05:00",
+    "Status": null,
+    "Content": "[Template: Contract Template] 123",
+    "Template": {
+      "TemplateId": 1,
+      "Name": "Contract Template",
+      "DocumentType": "contract",
+      "FilePath": null,
+      "Description": null
+    }
+  },
+  {
+    "Id": 2,
+    "Type": "application",
+    "Title": null,
+    "Author": null,
+    "CreatedDate": "2026-04-23T19:30:20.6030033+05:00",
+    "LastModified": "2026-04-23T19:30:23.7350318+05:00",
+    "Status": null,
+    "Content": "[Template: Application Template] 123",
+    "Template": {
+      "TemplateId": 2,
+      "Name": "Application Template",
+      "DocumentType": "application",
+      "FilePath": null,
+      "Description": null
+    }
+  },
+  {
+    "Id": 3,
+    "Type": "memo",
+    "Title": null,
+    "Author": null,
+    "CreatedDate": "2026-04-23T19:30:56.2930579+05:00",
+    "LastModified": "2026-04-23T19:30:59.6211396+05:00",
+    "Status": null,
+    "Content": "[Template: Memo Template] 123",
+    "Template": {
+      "TemplateId": 3,
+      "Name": "Memo Template",
+      "DocumentType": "memo",
+      "FilePath": null,
+      "Description": null
+    }
+  }
+]
