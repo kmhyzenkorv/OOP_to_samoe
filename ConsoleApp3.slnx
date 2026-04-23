@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ConsoleApp3/ConsoleApp3.csproj" />
+  <Project Path="romashka_core/romashka_core.csproj" Id="e01d81a0-24df-4c1c-8b0a-0a48033f8648" />
+  <Project Path="roma_application/roma_application.csproj" Id="49c018b6-7e5b-4d8e-bd9c-283b8a30dad5" />
+  <Project Path="structure/oma_structure.csproj" Id="8ece98c7-b61e-43bc-b864-216d31ddb95c" />
+</Solution>
