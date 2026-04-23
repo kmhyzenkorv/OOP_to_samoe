@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:core="clr-namespace:romashka_core;assembly=romashka_core"
+             x:Class="RomashkaMaui.MainPage"
+             Title="Romashka — Управление документами">
+
+    <Grid Padding="16" ColumnDefinitions="2*,3*" ColumnSpacing="16" RowDefinitions="*,Auto">
+
+        <!-- Left column: list + create -->
+        <Border Grid.Column="0" Grid.Row="0" Stroke="#CCCCCC" StrokeThickness="1" Padding="12">
+            <Grid RowDefinitions="Auto,*,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="8">
+
+                <Label Grid.Row="0" Text="Документы" FontSize="18" FontAttributes="Bold"/>
+
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Documents}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="core:Document">
+                            <Grid Padding="8" ColumnDefinitions="Auto,Auto,*" ColumnSpacing="8">
+                                <Label Grid.Column="0" Text="{Binding Id, StringFormat='#{0}'}" FontAttributes="Bold"/>
+                                <Label Grid.Column="1" Text="{Binding Type}" TextColor="#666"/>
+                                <Label Grid.Column="2" Text="{Binding Content}" LineBreakMode="TailTruncation"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <BoxView Grid.Row="2" HeightRequest="1" Color="#DDD" Margin="0,8"/>
+
+                <Label Grid.Row="3" Text="Новый документ" FontAttributes="Bold"/>
+                <Picker Grid.Row="4"
+                        Title="Тип документа"
+                        ItemsSource="{Binding DocumentTypes}"
+                        SelectedItem="{Binding SelectedType, Mode=TwoWay}"/>
+                <Editor Grid.Row="5"
+                        Placeholder="Содержимое документа"
+                        Text="{Binding NewContent, Mode=TwoWay}"
+                        HeightRequest="80"
+                        AutoSize="TextChanges"/>
+                <Button Grid.Row="6" Text="Создать" Clicked="OnCreateClicked"/>
+            </Grid>
+        </Border>
+
+        <!-- Right column: details + history -->
+        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="Auto,*,Auto,Auto,*" RowSpacing="8">
+
+            <Label Grid.Row="0" Text="Выбранный документ" FontSize="18" FontAttributes="Bold"/>
+
+            <Border Grid.Row="1" Stroke="#CCCCCC" StrokeThickness="1" Padding="12" IsVisible="{Binding HasSelection}">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,*" RowSpacing="6">
+                    <Label Grid.Row="0" Text="{Binding SelectedDocument.Id, StringFormat='ID: {0}'}"/>
+                    <Label Grid.Row="1" Text="{Binding SelectedDocument.Type, StringFormat='Тип: {0}'}"/>
+                    <Label Grid.Row="2" Text="{Binding SelectedDocument.CreatedDate, StringFormat='Создан: {0:g}'}"/>
+                    <Label Grid.Row="3" Text="{Binding SelectedDocument.LastModified, StringFormat='Изменён: {0:g}'}"/>
+                    <Editor Grid.Row="4"
+                            Text="{Binding SelectedContent, Mode=TwoWay}"
+                            AutoSize="TextChanges"
+                            HeightRequest="120"/>
+                </Grid>
+            </Border>
+
+            <HorizontalStackLayout Grid.Row="2" Spacing="8">
+                <Button Text="Сгенерировать по шаблону" Clicked="OnGenerateClicked"/>
+                <Button Text="Удалить" Clicked="OnDeleteClicked" BackgroundColor="#C0392B" TextColor="White"/>
+                <Button Text="Сохранить всё" Clicked="OnSaveClicked"/>
+                <Button Text="История" Clicked="OnHistoryClicked"/>
+            </HorizontalStackLayout>
+
+            <Label Grid.Row="3" Text="История операций" FontAttributes="Bold"/>
+            <ScrollView Grid.Row="4">
+                <Label Text="{Binding HistoryText}" FontFamily="Courier" FontSize="12"/>
+            </ScrollView>
+        </Grid>
+
+        <!-- Status bar -->
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,12,0,0" Padding="12,8" BackgroundColor="#EEE">
+            <Label Text="{Binding StatusMessage}" FontAttributes="Italic"/>
+        </Border>
+    </Grid>
+
+</ContentPage>
