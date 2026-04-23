@@ -76,7 +76,7 @@
         </Grid>
 
         <!-- Status bar -->
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,12,0,0" Padding="12,8" BackgroundColor="#EEE">
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,12,0,0" Padding="12,8" BackgroundColor="#666">
             <Label Text="{Binding StatusMessage}" FontAttributes="Italic"/>
         </Border>
     </Grid>
