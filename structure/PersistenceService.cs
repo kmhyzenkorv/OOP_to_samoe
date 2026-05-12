@@ -9,15 +9,30 @@ namespace oma_structure
         {
             using (AppDbContext db = new AppDbContext())
             {
+                //db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
 
                 db.Documents.RemoveRange(db.Documents);
 
-                db.SaveChanges();
+                try { db.SaveChanges(); }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.InnerException?.ToString());
+                    throw;
+                }
+
 
                 db.Documents.AddRange(docs);
 
-                db.SaveChanges();
+                try { db.SaveChanges(); }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.InnerException?.ToString());
+                    throw;
+                }
+
             }
         }
 

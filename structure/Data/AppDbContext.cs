@@ -16,6 +16,10 @@ namespace oma_structure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Document>()
+            .Property(d => d.Id)
+            .ValueGeneratedNever();
+
             modelBuilder.Entity<ContractDocument>();
             modelBuilder.Entity<ApplicationDocument>();
             modelBuilder.Entity<MemoDocument>();
