@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "Id": 1,
+    "Type": "contract",
+    "Title": null,
+    "Author": null,
+    "CreatedDate": "2026-04-24T13:44:03.2963336+05:00",
+    "LastModified": "2026-04-24T13:44:12.4222948+05:00",
+    "Status": null,
+    "Content": "[Template: Contract Template] 123123123123",
+    "Template": {
+      "TemplateId": 1,
+      "Name": "Contract Template",
+      "DocumentType": "contract",
+      "FilePath": null,
+      "Description": null
+    }
+  }
+]
